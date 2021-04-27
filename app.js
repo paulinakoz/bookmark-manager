@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const bookmarksRouter = require('./controllers/bookmarksRouter');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -10,11 +11,9 @@ app.use(require('body-parser').urlencoded({ extended: false }));
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-    res.render('pages/index'); 
-})
+app.use('/', bookmarksRouter);
 
 app.listen(port, () => {
     console.log(`Bookmark manager app listening at http://localhost:${port}`);
-  });
+});
 
