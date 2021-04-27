@@ -6,8 +6,19 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Bookmark Url: <%= bookmarkUrl %></h1>
-    <h1>Bookmark Comment: <%= bookmarkComment %></h1>
-    <h1>Bookmark Tags: <%= bookmarkTags %></h1>
+    <table>
+        <th>URL</th>
+        <th>Comments</th>
+        <th>Tags</th>
+        <tr>
+            <td><%= bookmarkUrl[0] %></td>
+            <td><%= bookmarkComment[0] %></td>
+            <td><%= bookmarkTags[0] %></td>
+          </tr>
+    </table>
+    <form>
+        <input type="text">
+        <input type="submit" value="Submit URL Bookmark">
+    </form>
 </body>
 </html>

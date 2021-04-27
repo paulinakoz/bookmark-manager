@@ -4,30 +4,38 @@ const bookmarksRouter = express.Router();
 
 const { models, sequelize } = require('../models');
 
-const bookmarks;
+const urlarray = [];
+const commentarray = [];
+const tagsarray = [];
+
+   sequelize.sync().then(async () => {
+   const bookmarks = await models.Bookmark.findAll()
+   for(let i=0; i<bookmarks.length; i++) {
+    let a = bookmarks[i].dataValues.url;
+    let b = bookmarks[i].dataValues.comment;
+    let c = bookmarks[i].dataValues.tags;
+    urlarray.push(a)
+    commentarray.push(b)
+    tagsarray.push(c)
+    }
+   }
+   )
+    
+   
+
 
 bookmarksRouter.get("/", (req, res) => {
-    bookmarks.forEach((book) => {
-        let bookmarkUrl = book.bookmark.dataValues.url;
-        let bookmarkComment = book.bookmark.dataValues.comment;
-        let bookmarkTags = book.bookmark.dataValues.tags;
-
-        return bookmarkUrl, bookmarkComment, bookmarkTags;
-    });
+    
 
     res.render('pages/index', {
-        bookmarkUrl: bookmarkUrl, 
-        bookmarkComment: bookmarkComment,
-        bookmarkTags: bookmarkTags,
+        bookmarkUrl: urlarray, 
+        bookmarkComment: commentarray,
+        bookmarkTags: tagsarray,
     }); 
 });
 
 
-sequelize.sync().then(async () => {
-    bookmarks = await models.Bookmark.findAll()
 
-    console.log(bookmarks);
-});
 
 
 module.exports = bookmarksRouter;
