@@ -1,0 +1,34 @@
+{
+  "name": "bookmark-manager",
+  "version": "1.0.0",
+  "description": "Bookmark manager app",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/paulinakoz/bookmark-manager.git"
+  },
+  "author": "Paulina Kozaczek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulinakoz/bookmark-manager/issues"
+  },
+  "homepage": "https://github.com/paulinakoz/bookmark-manager#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "cypress": "^7.1.0",
+    "jasmine": "^3.7.0",
+    "nodemon": "^2.0.7"
+  }
+}
