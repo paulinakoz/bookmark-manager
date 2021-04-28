@@ -31,13 +31,17 @@ bookmarksRouter.post('/add', async (req, res) => {
     res.redirect('/'); 
 })
 
-//bookmarksRouter.post('/delete', async (req, res) => {
-    //$("button").click(function() {
-  //      return idtodelete = this.id; // or alert($(this).attr('id'));
-  //  });
- //   await models.Bookmark.destroy({idtodelete})
- //   res.redirect('/'); 
-//})
+bookmarksRouter.get('/delete/:id', async (req, res) => {
+    const id = parseInt(req.params.id)
+
+    await models.Bookmark.destroy({
+        where: {
+           id: id
+        }
+    })
+
+   res.redirect('/'); 
+})
 
 
 
