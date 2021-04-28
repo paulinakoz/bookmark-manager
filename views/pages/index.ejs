@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js%22%3E"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
+    <form method="POST" action="/add">
+        <input name="url" type="text" >
+        <input name="comment" type="text" >
+        <input name="tags" type="text" >
+        <input type="submit" value="Submit Bookmark">
+    </form>
     <table>
         <th>URL</th>
         <th>Comments</th>
         <th>Tags</th>
+        <th>ID</th>
             <tr>
-                <% bookmarkUrl.forEach((url) => { %>
-                    <td><%= url %></td> 
+                <% bookmarkarray.forEach((url) => { %>
+                    <tr>  <td><%= url[0] %></td>
+                    <td><%= url[1] %></td>
+                    <td><%= url[2] %></td> 
+                    <td><%= url[3] %></td>
+                    <td><form method="POST" action="/delete">
+                        <button id="<% url[3] %>" type="submit">Delete</button>
+                    </form></td>
+                </tr>
                 <% }) %>
             </tr>
-            <tr>
-                <% bookmarkComment.forEach((comment) => { %>
-                    <td><%= comment %></td> 
-                <% }) %>
-            </tr>
-            <tr>
-                <% bookmarkTags.forEach((tag) => { %>
-                    <td><%= tag %></td> 
-                <% }) %>
-            </tr>
+            
     </table>
-    <form>
-        <input type="text">
-        <input type="submit" value="Submit URL Bookmark">
-    </form>
+    
 </body>
 </html>
