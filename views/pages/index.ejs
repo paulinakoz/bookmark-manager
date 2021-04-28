@@ -10,11 +10,21 @@
         <th>URL</th>
         <th>Comments</th>
         <th>Tags</th>
-        <tr>
-            <td><%= bookmarkUrl[0] %></td>
-            <td><%= bookmarkComment[0] %></td>
-            <td><%= bookmarkTags[0] %></td>
-          </tr>
+            <tr>
+                <% bookmarkUrl.forEach((url) => { %>
+                    <td><%= url %></td> 
+                <% }) %>
+            </tr>
+            <tr>
+                <% bookmarkComment.forEach((comment) => { %>
+                    <td><%= comment %></td> 
+                <% }) %>
+            </tr>
+            <tr>
+                <% bookmarkTags.forEach((tag) => { %>
+                    <td><%= tag %></td> 
+                <% }) %>
+            </tr>
     </table>
     <form>
         <input type="text">
