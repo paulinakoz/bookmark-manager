@@ -20,3 +20,15 @@ module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
 }
+
+const truncateTables = require('../../database-cleaner.js')
+
+module.exports = (on, config) => {
+  on('task', {
+    resetDb() {
+      console.log('running resetDb task')
+      truncateTables()
+      return null
+    },
+  })
+}

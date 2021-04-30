@@ -1,6 +1,6 @@
 describe("Bookmark manager app", () => {
-    beforeEach(() => {
-        cy.visit('/');
+    beforeEach(function() {
+        cy.visit('/')
     })
 
     it("shows three inputs at the top", () => {
@@ -29,7 +29,29 @@ describe("Bookmark manager app", () => {
         cy.contains('Tags');
     })
 
-    it("shows the delete buttons for every bookmark", () => {
-        cy.get('#delete-button').should('be.visible');
+    it("shows the delete buttons for bookmark", () => {
+        cy.get('#delete-bookmark-0').should('be.visible');
+    })
+
+    it("deletes a bookmark and shows new list of bookmarks", () => {
+        cy.get('#url').type('www.instagram.com');
+        cy.get('#comment').type('Instagram homepage');
+        cy.get('#tags').type('Social media');
+        cy.get('#submit-button').click();
+
+        cy.get('#delete-bookmark-1').click()
+        cy.get('#bookmark-url-1').should('not.exist')
+    })
+
+    it("updates a bookmark and shows new list of bookmarks", () => {
+        cy.get('#url').type('www.netflix.com');
+        cy.get('#comment').type('Netflix homepage');
+        cy.get('#tags').type('Video');
+        cy.get('#submit-button').click();
+        
+        cy.get('#edit-bookmark-1').click()
+        cy.get('#edit-textbox-url').type('www.disneyplayer.com')
+        cy.get('#edit-submit').click()
+        cy.get('#bookmark-url-1').should('contain', 'www.disneyplayer.com')
     })
 })
